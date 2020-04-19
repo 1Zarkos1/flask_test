@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="stylesheet" href="{{ url_for('static', filename='reset.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/globe-favi.png') }}">
+    {{ moment.include_jquery() }}
+    {{ moment.include_moment() }}
+    {{ moment.lang(g.locale) }}
+    <script>
+        function translate(sourceElem, destElem, sourceLang, destLang) {
+            $(destElem).html('<img src="{{ url_for('static', filename='loading.gif') }}">');
+            $.post('/translate', {
+                text: $(sourceElem).text(),
+                source_language: sourceLang,
+                dest_language: destLang
+            }).done(function(response) {
+                $(destElem).text(response['text'])
+            }).fail(function() {
+                $(destElem).text("{{ _('Error: Could not contact server.') }}");
+            });
+        }
+    </script>
+    <title>Southeast Asia Travel</title>
+</head>
+<body>
+    <header>
+        <ul>
+            <a href="{{ url_for('news') }}"><li>News</li></a>
+            <a href="{{ url_for('guides') }}"><li>Guides</li></a>
+            <a href="{{ url_for('galleries') }}"><li>Galleries</li></a>
+            <a href="{{ url_for('countries') }}"><li>Countries</li></a>
+            <a href="{{ url_for('gear') }}"><li>Travel Gear</li></a>
+            <a href="{{ url_for('about_me') }}"><li>About</li></a>
+            {% if current_user.is_anonymous %}
+                <a href="{{ url_for('login') }}"><li>Sign up</li></a>
+            {% else %}
+                <a href="{{ url_for('user', username=current_user.username) }}">
+                    <li>{{ current_user.username }}</li>
+                </a>
+                <a href="{{ url_for('logout') }}">
+                    <li>Log out</li>
+                </a>
+            {% endif %}
+        </ul>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <div class='copy'>
+            &copy; Copyright 2020 Zarkos. Created using Flask
+        </div>
+    </footer>
+</body>
+</html>

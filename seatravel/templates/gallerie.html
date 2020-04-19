@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+    <section class='images'>
+    {% for ref in refs %}
+        <a href="{{ url_for('image', ref=ref) }}">
+            <img src="/static/img/{{ ref }}" alt="picture">
+        </a>
+    {% endfor %}
+    </section>
+{% endblock content %}

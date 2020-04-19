@@ -1,0 +1,43 @@
+body {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0rem 1rem;
+}
+
+ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+li {
+    list-style: none;
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    padding: 2rem;
+    box-sizing: border-box;
+    max-height: 5rem;
+}
+
+a {
+    color: black;
+    font-style: none;
+}
+
+li:hover {
+    border-bottom: solid 3px lightgray;
+}
+
+
+footer {
+    color: grey;
+    font-size: 0.9rem;
+    border-top: 1px solid lightgray;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.form-group {
+    margin-bottom: 0.5rem;
+}
