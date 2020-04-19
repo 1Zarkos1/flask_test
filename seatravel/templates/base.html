@@ -29,19 +29,19 @@
 <body>
     <header>
         <ul>
-            <a href="{{ url_for('news') }}"><li>News</li></a>
-            <a href="{{ url_for('guides') }}"><li>Guides</li></a>
-            <a href="{{ url_for('galleries') }}"><li>Galleries</li></a>
-            <a href="{{ url_for('countries') }}"><li>Countries</li></a>
-            <a href="{{ url_for('gear') }}"><li>Travel Gear</li></a>
-            <a href="{{ url_for('about_me') }}"><li>About</li></a>
+            <a href="{{ url_for('main.news') }}"><li>News</li></a>
+            <a href="{{ url_for('main.guides') }}"><li>Guides</li></a>
+            <a href="{{ url_for('main.galleries') }}"><li>Galleries</li></a>
+            <a href="{{ url_for('main.countries') }}"><li>Countries</li></a>
+            <a href="{{ url_for('main.gear') }}"><li>Travel Gear</li></a>
+            <a href="{{ url_for('main.about_me') }}"><li>About</li></a>
             {% if current_user.is_anonymous %}
-                <a href="{{ url_for('login') }}"><li>Sign up</li></a>
+                <a href="{{ url_for('auth.login') }}"><li>Sign up</li></a>
             {% else %}
-                <a href="{{ url_for('user', username=current_user.username) }}">
+                <a href="{{ url_for('main.user', username=current_user.username) }}">
                     <li>{{ current_user.username }}</li>
                 </a>
-                <a href="{{ url_for('logout') }}">
+                <a href="{{ url_for('auth.logout') }}">
                     <li>Log out</li>
                 </a>
             {% endif %}

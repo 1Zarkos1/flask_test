@@ -1,1 +1,2 @@
-FLASK_APP=seatravel.py
+FLASK_APP=run.py
+FLASK_DEBUG=True

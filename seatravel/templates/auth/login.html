@@ -44,11 +44,11 @@
             </div>
         </form>
         <small class="form-text text-muted">
-            New User? <a href="{{ url_for('signup') }}">Click to Register!</a>
+            New User? <a href="{{ url_for('auth.signup') }}">Click to Register!</a>
         </small>
         <small class="form-text text-muted">
             Forgot Your Password? 
-            <a href="{{ url_for('reset_password_request') }}">Click to Reset!</a>
+            <a href="{{ url_for('auth.reset_password_request') }}">Click to Reset!</a>
         </small>
     </div>
 {% endblock content %}

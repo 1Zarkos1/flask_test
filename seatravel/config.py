@@ -26,3 +26,8 @@ class Config:
     """Custom config"""
     POSTS_PER_PAGE = 5
     MS_TRANSLATOR_KEY = environ.get('MS_TRANSLATOR_KEY')
+
+
+class TestConfig(Config):
+    TESTING = True
+    SQLALCHEMY_DATABASE_URI = 'sqlite://'
